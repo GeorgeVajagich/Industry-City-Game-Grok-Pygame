@@ -50,6 +50,9 @@ FARM_PRODUCTION = 20
 MINE_PRODUCTION = 20
 HOUSE_CAPACITY = 5
 
+# Worker constants (unchanged)
+HOUSE_CAPACITY = 5
+
 # Technology effect functions
 def reduce_factory_workers():
     global WORKERS_PER_FACTORY
@@ -75,13 +78,13 @@ def dynamite():
     global WORKERS_PER_MINE
     WORKERS_PER_MINE = 12
 
-def tenement_housing():
+def urban_housing():
     global HOUSE_CAPACITY
-    HOUSE_CAPACITY = 7
+    HOUSE_CAPACITY +=2  # Increases capacity by 2 
 
-def steam_pump():
-    global WORKERS_PER_HOUSE
-    WORKERS_PER_HOUSE = 3
+def modern_medicine():
+    global HOUSE_CAPACITY
+    HOUSE_CAPACITY += 3 # Increases capacity by 3
 
 # Technology definitions
 TECHNOLOGIES = {
@@ -115,15 +118,15 @@ TECHNOLOGIES = {
         "effect": increase_mine_production,
         "description": "Increases mine production to 30 resources"
     },
-    "tenement_housing": {
+    "urban_housing": {
         "base_cost": 200,
-        "effect": tenement_housing,
+        "effect": urban_housing,
         "description": "Increases house worker capacity to 7"
     },
-    "steam_pump": {
-        "base_cost": 150,
-        "effect": steam_pump,
-        "description": "Improves housing efficiency (placeholder)"
+    "modern_medicine": {
+        "base_cost": 400,
+        "effect": modern_medicine,
+        "description": "Increases house worker capacity to 8"
     }
 }
 
@@ -131,7 +134,7 @@ tech_list = [
     "bessemer_steel_process", "factory_efficiency",
     "mccormicks_reaper", "advanced_farming",
     "dynamite", "deep_mining",
-    "tenement_housing", "steam_pump"
+    "urban_housing", "modern_medicine"
 ]
 
 # Load sound effects
